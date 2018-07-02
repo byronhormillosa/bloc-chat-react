@@ -20,6 +20,7 @@ class RoomList extends Component {
     render() {
         return (
           <div className="roomlist">
+            <h1>Chat Room List</h1>
             <ul>
               {this.state.rooms.map( (room, index) => (
                 <li key={index}> {room.name} </li>
