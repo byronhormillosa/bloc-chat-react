@@ -16,6 +16,17 @@ class RoomList extends Component {
       });
    }
     
+    handleChange(e) {
+    this.setState({ newRoomName: e.target.value })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (!this.state.newRoomName) return
+    this.roomsRef.push({ name: this.state.newRoomName })
+    this.setState({ newRoomName: ''})
+  }
+
     
     render() {
         return (
@@ -26,6 +37,14 @@ class RoomList extends Component {
                 <li key={index}> {room.name} </li>
                 ) )}
            </ul>
+             <form onSubmit={ (e) => this.handleSubmit(e) }>
+              <p>Create New Chat Room</p>
+              <label>
+                Name A New Chat Room:
+                <input type="text" value={this.state.newRoomName} onChange={ (e) => this.handleChange(e) }/>
+              </label>
+              <input type="submit" value="submit" />
+            </form>
           </div>
         );
     }
