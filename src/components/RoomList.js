@@ -26,7 +26,7 @@ class RoomList extends Component {
                 <li key={index}> {room.name} </li>
                 ) )}
            </ul>
-         </div>
+          </div>
         );
     }
 }
