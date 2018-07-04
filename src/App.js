@@ -3,6 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 var config = {
     apiKey: "AIzaSyALUrSpYwl1mYccbd8ykIGAFcl1-pzOjNA",
@@ -18,9 +19,14 @@ class App extends Component {
     constructor(props) {
     super(props);
         
-        this.state={activeRoom: ''}
+        this.state={activeRoom: '', activeUser: ''}
         this.changeActiveRoom = this.changeActiveRoom.bind(this);
+        this.setUser = this.setUser.bind(this);
     }
+    
+     setUser(user) {
+         this.setState({ activeUser: user })
+     }
     
     changeActiveRoom(room) {
         this.setState({activeRoom:room})
@@ -31,12 +37,21 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Bloc Chat App</h1>
+        
         <RoomList 
         firebase={firebase} 
         activeRoom={this.state.activeRoom}
         changeActiveRoom={this.changeActiveRoom} />
+        
+        <User
+          firebase={firebase}
+          setUser={this.setUser}
+          user={this.state.activeUser} />
+        
         <MessageList firebase={firebase}
-        activeRoom={this.state.activeRoom} />
+          activeRoom={this.state.activeRoom}
+          user={this.state.activeUser}
+          setUser={this.setUser} />
         
       </div>
     );
