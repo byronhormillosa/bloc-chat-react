@@ -33,13 +33,8 @@ class RoomList extends Component {
     render() {
         return (
           <div className="roomlist">
-            <h1>Chat Room List</h1>
-            <ul>
-              {this.state.rooms.map( (room, index) => (
-                <li key={index} onClick={() => this.props.changeActiveRoom(room)}> {room.name} </li>
-                ) )}
-           </ul>
-             <form onSubmit={ (e) => this.handleSubmit(e) }>
+            <h1>Bloc Chat App</h1>
+            <form onSubmit={ (e) => this.handleSubmit(e) }>
               <p>Create New Chat Room</p>
               <label>
                 Name A New Chat Room:
@@ -51,6 +46,12 @@ class RoomList extends Component {
               </label>
               <input type="submit" value="submit" />
             </form>
+            <ul>
+              {this.state.rooms.map( (room, index) => (
+                <li key={index} onClick={() => this.props.changeActiveRoom(room)}> {room.name} </li>
+                ) )}
+           </ul>
+             
           </div>
         );
     }

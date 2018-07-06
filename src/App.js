@@ -15,6 +15,7 @@ var config = {
   };
   firebase.initializeApp(config);
 
+
 class App extends Component {
     constructor(props) {
     super(props);
@@ -36,19 +37,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Bloc Chat App</h1>
-        
+            
+        <aside className='sideList'>
         <RoomList 
         firebase={firebase} 
         activeRoom={this.state.activeRoom}
         changeActiveRoom={this.changeActiveRoom} />
+        </aside>
         
-        <User
+        <User 
+          id='Userid'
           firebase={firebase}
           setUser={this.setUser}
           user={this.state.activeUser} />
         
-        <MessageList firebase={firebase}
+        <MessageList id='MessageList'  
+          firebase={firebase}
           activeRoom={this.state.activeRoom}
           user={this.state.activeUser}
           setUser={this.setUser} />
